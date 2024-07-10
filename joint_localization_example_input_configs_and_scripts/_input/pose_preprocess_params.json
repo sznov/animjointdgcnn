@@ -1,0 +1,12 @@
+{
+    "additional_leaf_bones": [
+        "spine_03"
+    ],
+    "collision_check_ignore_bones": [
+        "Root",
+        "head", 
+        "neck_01",
+        "ball_l",
+        "ball_r"
+    ]
+}

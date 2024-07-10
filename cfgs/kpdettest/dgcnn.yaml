@@ -1,0 +1,39 @@
+batch_size: 1
+
+model:
+  NAME: SoftmaxKeypointDetection
+  num_keypoints: 69
+  encoder_args:
+    NAME: DGCNN
+    in_channels: 3 # TODO 3 if without normals, 6 with normals
+    channels: 64
+    embed_dim: 512
+    n_blocks: 5
+    conv: 'edge'
+    #block: 'res'
+    k: 80 # TODO default is 20 for 1024 in points, 40 for 2048 in points, etc...., we have 20k inp oints, so we should have... k=400?
+    is_seg: True 
+    #conv_args:
+    #  order: conv-norm-act
+    #act_args:
+    #  act: "relu" # leakrelu makes training unstable.
+    norm_args:
+      norm: ln # ln makes training unstable
+   
+
+dataset:
+  train:
+    split: train
+    presample: False
+    presample_type: random_constant
+    presample_size: 10000
+  val:
+    split: val
+    presample: False
+    presample_type: random_constant
+    presample_size: 10000
+  test:
+    split: test
+    presample: False
+    presample_type: random_constant
+    presample_size: 10000

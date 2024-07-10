@@ -1,0 +1,86 @@
+use_amp: true
+seed: 0
+
+dataset:
+  common:
+    NAME: KeypointDetectionTest
+    data_root: data/ply_and_keypoints_dataset/
+  train: 
+    split: train
+    presample: False
+  val:
+    split: val
+    presample: False
+  test:
+    split: test
+    presample: False
+
+normal_channel: False
+feature_keys: pos # TODO feats?
+
+datatransforms:
+  train:
+    [
+      PointsToTensor,
+      PointCloudScaling,
+      #PointCloudCenterAndNormalize,
+      PointCloudJitter,
+    ]
+  val: [PointsToTensor] #[PointsToTensor, PointCloudCenterAndNormalize]
+  test: [PointsToTensor] #[PointsToTensor, PointCloudCenterAndNormalize]
+  vote: [] #[PointCloudScaling]
+  kwargs:
+    jitter_sigma: 0.001
+    jitter_clip: 0.005
+    scale: [0.8, 1.2]
+    gravity_dim: 1
+    angle: [0, 1.0, 0]
+
+# TODO Configure
+batch_size: 1 # need equal amount of points for batch_size > 1 or custom way to handle differing number of points
+val_batch_size: 1
+test_batch_size: 1
+dataloader:
+  num_workers: 0
+
+# ---------------------------------------------------------------------------- #
+# Evaluation cfgs
+# ---------------------------------------------------------------------------- #
+eval_metric: loss # string under eval_metric key needs to contain substring 'loss' for mode to be 'min', e.g. for PlateauLRScheduler.
+num_votes: 10
+refine: True
+
+# ---------------------------------------------------------------------------- #
+# Training cfgs
+# ---------------------------------------------------------------------------- #
+lr: 1.0e-3
+min_lr: 1.0e-9
+optimizer:
+  NAME: adamw
+  weight_decay: 1.0e-4
+
+grad_norm_clip: 1
+use_voting: False
+
+# criterion_args:
+#   NAME: Poly1FocalLoss
+
+# scheduler
+epochs: 250
+sched: plateau
+patience_epochs: 8
+decay_rate: 0.75
+warmup_epochs: 0
+sched_on_epoch: True
+
+# ---------------------------------------------------------------------------- #
+# io and misc
+# ---------------------------------------------------------------------------- #
+print_freq: 10
+val_freq: 1
+
+# ----------------- Model related
+pretrained_path: null
+
+# Save predicted keypoints generated during validation phase
+save_predictions: True

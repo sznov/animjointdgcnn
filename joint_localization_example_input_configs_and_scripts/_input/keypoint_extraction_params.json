@@ -1,0 +1,6 @@
+{
+    "skip_keypoints": [
+        "Root", "Root_tail"
+    ],
+    "root_override": "pelvis"
+}

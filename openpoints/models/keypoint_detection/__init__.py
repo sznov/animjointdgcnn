@@ -1,0 +1,1 @@
+from .softmax_keypoint_detection import SoftmaxKeypointDetection
