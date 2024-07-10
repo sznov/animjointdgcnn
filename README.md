@@ -4,6 +4,10 @@ Fork of PointMetaBase (https://github.com/linhaojia13/PointMetaBase).
 
 Implementation of the network described in https://ieeexplore.ieee.org/document/10579426 (DOI: 10.1109/ZINC61849.2024.10579426).
 
+Abstract: Contemporary approaches to solving various problems that require analyzing three-dimensional (3D) meshes and point clouds have adopted the use of deep learning algorithms that directly process 3D data such as point coordinates, normal vectors and vertex connectivity information. Our work proposes one such solution to the problem of positioning body and linger animation skeleton joints within 3D models of human bodies. Due to scarcity of annotated real human scans, we resort to generating synthetic samples while varying their shape and pose parameters. Similarly to the state-of-the-art approach, our method computes each joint location as a convex combination of input points. Given only a list of point coordinates and normal vector estimates as input, a dynamic graph convolutional neural network is used to predict the coefficients of the convex combinations. By comparing our method with the state-of-the-art, we show that it is possible to achieve significantly better results with a simpler architecture, especially for finger joints. Since our solution requires fewer precomputed features, it also allows for shorter processing times.
+
+See https://github.com/sznov/joint-localization for additional preprocessing scripts.
+
 To achieve better results, some modifications were done in this implementation:
 - LayerNorm is used instead of BatchNorm
 - Normal vectors are not used as additional input features
