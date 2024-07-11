@@ -8,6 +8,8 @@ Abstract: Contemporary approaches to solving various problems that require analy
 
 See https://github.com/sznov/joint-localization for additional preprocessing scripts.
 
+Link to processed dataset used in paper: https://drive.google.com/file/d/1Mvf2nO74B0vJB5xJ--bq9ba5qZllpef8/view?usp=sharing
+
 To achieve better results, some modifications were done in this implementation:
 - LayerNorm is used instead of BatchNorm
 - Normal vectors are not used as additional input features
