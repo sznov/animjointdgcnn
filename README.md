@@ -17,7 +17,7 @@ To achieve better results, some modifications were done in this implementation:
 
 ## Results
 
-E(BN) is the model from the paper. E(LN-ND) is the model as implemented here. E(LN+SFL-ND) is the model as implemented here, with finger loss scaled by 50 in the loss function.
+E(BN) is the model from the paper. E(LN-DN) is the model as implemented here. E(LN+SFL-DN) is the model as implemented here, with finger loss scaled by 50 in the loss function.
 
 ### Mean per joint position error (MPJPE, in % of mesh height)
 
