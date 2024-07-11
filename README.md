@@ -15,6 +15,38 @@ To achieve better results, some modifications were done in this implementation:
 - Normal vectors are not used as additional input features
 - Instead of computing dynamic neighbourhoods for EdgeConv blocks, fixed neighbourhoods are used
 
+## Example scripts
+
+Training:
+```
+CUDA_VISIBLE_DEVICES=0 python examples/keypoint_detection/main.py \
+ --cfg cfgs/kpdettest/dgcnn.yaml wandb.use_wandb=False
+```
+
+Resume training:
+```
+CUDA_VISIBLE_DEVICES=0 python examples/keypoint_detection/main.py \
+ --cfg cfgs/kpdettest/dgcnn.yaml wandb.use_wandb=False \
+ --mode resume \
+ --pretrained_path "log/kpdettest/kpdettest-train-dgcnn-ngpus1-seed0-XXXXXXXX-XXXXXX-XXXXXXXXXXXXXXXXXXXXXX/checkpoint/kpdettest-train-dgcnn-ngpus1-seed0-XXXXXXXX-XXXXXX-XXXXXXXXXXXXXXXXXXXXXX_ckpt_latest.pth"
+```
+
+Validation:
+```
+CUDA_VISIBLE_DEVICES=0 python examples/keypoint_detection/main.py \
+ --cfg cfgs/kpdettest/dgcnn.yaml mode=val wandb.use_wandb=False \
+ --pretrained_path log/kpdettest/kpdettest-train-dgcnn-ngpus1-seed0-XXXXXXXX-XXXXXX-XXXXXXXXXXXXXXXXXXXXXX/checkpoint/kpdettest-train-dgcnn-ngpus1-seed0-XXXXXXXX-XXXXXX-XXXXXXXXXXXXXXXXXXXXXX_ckpt_best.pth
+```
+
+Test:
+```
+CUDA_VISIBLE_DEVICES=0 python examples/keypoint_detection/main.py \
+ --cfg cfgs/kpdettest/dgcnn.yaml mode=test wandb.use_wandb=False \
+ --pretrained_path log/kpdettest/kpdettest-train-dgcnn-ngpus1-seed0-XXXXXXXX-XXXXXX-XXXXXXXXXXXXXXXXXXXXXX/checkpoint/kpdettest-train-dgcnn-ngpus1-seed0-XXXXXXXX-XXXXXX-XXXXXXXXXXXXXXXXXXXXXX_ckpt_best.pth
+```
+
+## Citation
+
 BibTeX citation:
 
 ```
