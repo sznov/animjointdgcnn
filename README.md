@@ -15,6 +15,20 @@ To achieve better results, some modifications were done in this implementation:
 - Normal vectors are not used as additional input features
 - Instead of computing dynamic neighbourhoods for EdgeConv blocks, fixed neighbourhoods are used
 
+## Results
+
+E(BN) is the model from the paper. E(LN-ND) is the model as implemented here. E(LN+SFL-ND) is the model as implemented here, with finger loss scaled by 50 in the loss function.
+
+### Mean per joint position error (MPJPE, in % of mesh height)
+
+![MPJPE for body joints](figures/mpjpe-body.png)
+![MPJPE for finger joints](figures/mpjpe-fingers.png)
+
+### Percentage of correct joints (PCJ)
+
+![PCJ for body joints](figures/pcj-body.png)
+![PCJ for finger joints](figures/pcj-fingers.png)
+
 ## Example scripts
 
 Training:
